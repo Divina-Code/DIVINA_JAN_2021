@@ -13,6 +13,7 @@ usa = pygame.image.load("img/usa.jpg")
 japan = pygame.image.load("img/yaponii-flag.png")
 
 
+
 russia = pygame.transform.scale(russia, (250, 180))
 gb = pygame.transform.scale(gb, (250, 180))
 ukraine = pygame.transform.scale(ukraine, (250, 180))
