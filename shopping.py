@@ -11,7 +11,9 @@ while True:
 
     if answer == '2':
         with open("shopping list.txt") as myFile:
-            print(myFile.read())
+            # for line in myFile.read():
+            #     print(line)
+            print("")
 
     if answer == '3':
         item = input("Что нужно удалить?")
@@ -27,4 +29,6 @@ while True:
 
         with open("shopping list.txt", 'w') as myFile:
             myFile.write('\n'.join(products))
+
+
 

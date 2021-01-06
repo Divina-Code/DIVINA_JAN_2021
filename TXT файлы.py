@@ -20,3 +20,7 @@ with open("shopping list.txt") as myFile:
 with open("shopping list.txt", 'a') as myFile:
     print(myFile.read())
 
+##Файл по полному пути
+myFile = open('C:/Users/User/Desktop/aaa.txt')
+print(myFile.read())
+myFile.close()
