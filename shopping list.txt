@@ -1,3 +1,6 @@
+potato
+cucumber
+tomato
+milk
 
-potato
-potato
+bread
