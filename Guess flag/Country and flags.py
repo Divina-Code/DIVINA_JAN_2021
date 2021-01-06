@@ -1,4 +1,5 @@
 import pygame
+from random import choice
 
 pygame.init()
 
@@ -6,19 +7,23 @@ gamedisplay = pygame.display.set_mode((800, 600))  # Создаём экран �
 pygame.display.set_caption("Guess the flag")  #Меняем заголовок окна
 gamedisplay.fill((100, 100, 100))
 
-russia = pygame.image.load("img/Russia.png")
-gb = pygame.image.load("img/greatbritan.jpg")
-ukraine = pygame.image.load("img/ukraine.jpg")
-usa = pygame.image.load("img/usa.jpg")
-japan = pygame.image.load("img/yaponii-flag.png")
+def make_flag(image):
+    img = pygame.image.load(image)  ##Загружаем картинку в програму
+    img = pygame.transform.scale(img, (250, 180)) ##меняем размер картинки
+    return img
+
+
+countries = {
+    "Russia": make_flag("img/Russia.png"),  #Слева от : находятся КЛЮЧИ(названия стран), справа - ЗНАЧЕНИЯ(картинки флагов)
+    "Great Britain": make_flag("img/greatbritan.jpg"),
+    "Ukraine": make_flag("img/ukraine.jpg"),
+    "USA": make_flag("img/usa.jpg"),
+    "Japan": make_flag("img/yaponii-flag.png")
+
+}
 
 
 
-russia = pygame.transform.scale(russia, (250, 180))
-gb = pygame.transform.scale(gb, (250, 180))
-ukraine = pygame.transform.scale(ukraine, (250, 180))
-usa = pygame.transform.scale(usa, (250, 180))
-japan = pygame.transform.scale(japan, (250, 180))
 
 game = True  # Продолжается игра или нет
 while game:
@@ -27,9 +32,17 @@ while game:
         if e.type == pygame.QUIT:
             game = False
 
+    random_country = choice(list(countries.keys()))
+    random_flag = countries[random_country]
 
-    gamedisplay.blit(russia, (0, 0))
-    gamedisplay.blit(japan, (251, 0))
-
+    gamedisplay.blit(random_flag, (275, 210))
     pygame.display.update()
+    user_answer = input("Name of country:\t")
+    if user_answer == random_country:
+        print("Correct")
+    else:
+        print("Incorrect")
+
+
+
 pygame.quit()
