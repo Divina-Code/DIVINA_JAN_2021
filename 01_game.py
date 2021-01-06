@@ -1,4 +1,5 @@
 import pygame
+from  random import randint as ri
 
 
 pygame.init()
@@ -31,7 +32,7 @@ while game:
 
             if e.button == 2: #если нажато колёсико мыши
                 print(1234567890)
-                ##!!!!!  ---- ИЗМЕНИТЬ ЦВЕТ НА РАНДОМНЫЙ
+                color = (ri(0, 255), ri(0, 255), ri(0, 255))
 
 
 
