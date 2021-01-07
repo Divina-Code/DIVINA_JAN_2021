@@ -5,7 +5,7 @@ gamedisplay = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Snowmans")
 
 
-def draw_snowmen(x, y, hat=False):
+def draw_snowmen(x, y, hat=False):  #прраметр hat НЕ ОБЯЗАТЕЛЬНЫЙ, если пользователь его не сообщит, по умолчанию он False
     pygame.draw.circle(gamedisplay, WHITE, (x,y), 25 )
     pygame.draw.circle(gamedisplay, WHITE, (x, y-35), 15 )
     if hat:

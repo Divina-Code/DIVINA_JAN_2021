@@ -6,10 +6,22 @@ pygame.display.set_caption("Snowmans")
 
 
 def draw_chess(x, y):
-    pygame.draw.circle(gamedisplay, WHITE, (x,y), 25 )
-    pygame.draw.circle(gamedisplay, WHITE, (x, y-35), 15 )
-    if hat:
-        pygame.draw.rect(gamedisplay, RED, ((x-10, y-75, 20, 30)))
+    """
+
+    :param x: Размер поля в клетках по ширине
+    :param y: Размер поля в клетках по высоте
+    :return:
+    """
+    startX = 100 #Вам нужно принимать этот параметр как необязательный, а не задавать тут
+    startY = 100
+    SIZE = 20
+
+    for a in range(x):
+        if a%2:
+            pygame.draw.rect(gamedisplay, RED, ((startX+a*SIZE, startY, SIZE, SIZE)))
+        else:
+            pygame.draw.rect(gamedisplay, WHITE, ((startX+a*SIZE, startY, SIZE, SIZE)))
+
 
 
 BLACK = (0,0,0)
