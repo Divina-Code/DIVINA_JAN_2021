@@ -34,12 +34,16 @@ class Car(pygame.sprite.Sprite):
         super().__init__(group)
         self.image = choice(car_images)
         self.rect = self.image.get_rect(x = 0, y= randint(0, 400) )
+        self.heals = 100
 
     def update(self):
         global finish
         self.rect.x+=randint(0, 4)
         if self.rect.right >= 800:
             finish = True
+
+    def kokoko(self):
+        self.heals-=10
 
 
 ############################################
@@ -48,6 +52,7 @@ car1 = Car(cars)
 car2 = Car(cars)
 car3 = Car(cars)
 
+car1.kokoko()
 
 game = True  #Продолжается игра или нет
 while game:
