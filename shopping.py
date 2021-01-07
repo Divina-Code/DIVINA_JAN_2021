@@ -10,10 +10,9 @@ while True:
             myFile.write("\n" + item)
 
     if answer == '2':
-        with open("shopping list.txt") as myFile:
-            # for line in myFile.read():
-            #     print(line)
-            print("")
+        with open("shopping list.txt", 'r', encoding='utf-8') as myFile:
+            print(myFile.read())
+
 
     if answer == '3':
         item = input("Что нужно удалить?")

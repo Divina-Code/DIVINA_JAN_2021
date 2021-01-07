@@ -1,6 +1,3 @@
-potato
-cucumber
-tomato
-milk
-
-bread
+картоха
+томат
+огурчик
