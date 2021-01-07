@@ -15,6 +15,10 @@ time = pygame.time.Clock()
 FPS = 60
 
 
+###TEXT
+myFont = pygame.font.SysFont('Ink Free', 80)  #В скобочках название и размер шрифта
+myTextIMG = myFont.render("FINISH", True, RED) #получаем картинку с нужным текстом
+
 ##############CAR
 green_car = pygame.image.load("img/yellow car.png")  #загружаем все картинки
 red_car = pygame.image.load("img/red car.png")
@@ -24,21 +28,25 @@ car_images = [ pygame.transform.scale(green_car, (200, 100)),
                pygame.transform.scale(red_car, (200, 100)),
                pygame.transform.scale(yellow_car, (200, 100))]
 
-
-class Car():
-    def __init__(self):
+finish = False
+class Car(pygame.sprite.Sprite):
+    def __init__(self, group):
+        super().__init__(group)
         self.image = choice(car_images)
         self.rect = self.image.get_rect(x = 0, y= randint(0, 400) )
 
-    def move(self):
-        self.rect.x+=randint(0, 1)
-
+    def update(self):
+        global finish
+        self.rect.x+=randint(0, 4)
+        if self.rect.right >= 800:
+            finish = True
 
 
 ############################################
-car1 = Car()
-car2 = Car()
-car3 = Car()
+cars = pygame.sprite.Group()
+car1 = Car(cars)
+car2 = Car(cars)
+car3 = Car(cars)
 
 
 game = True  #Продолжается игра или нет
@@ -49,13 +57,10 @@ while game:
             game = False
 
     gamedisplay.fill(BLACK)
-    gamedisplay.blit(car1.image, car1.rect)
-    gamedisplay.blit(car2.image, car2.rect)
-    gamedisplay.blit(car3.image, car3.rect)
-
-    car1.move()
-    car2.move()
-    car3.move()
-
+    cars.draw(gamedisplay)
+    if not finish:
+        cars.update()
+    else:
+        gamedisplay.blit(myTextIMG, (100, 0))
     pygame.display.update()
 pygame.quit()
