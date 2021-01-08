@@ -1,10 +1,10 @@
-import pygame
+from pygame import *
 from  random import randint as ri
 
 
-pygame.init()
+init()
 
-gamedisplay = pygame.display.set_mode((800, 600) ) #Создаём экран размером 800 на 600
+gamedisplay = display.set_mode((800, 600) ) #Создаём экран размером 800 на 600
 
 gamedisplay.fill((255, 255, 255)) #заливаем экран белым цветом
 
@@ -13,15 +13,15 @@ color = (255, radius, 0)
 game = True  #Продолжается игра или нет
 while game:
     color = (255, 0, radius)
-    events = pygame.event.get() #Запрашиваем СОБЫТИЯ, произошедшие в игре
+    events = event.get() #Запрашиваем СОБЫТИЯ, произошедшие в игре
 
     for e in events:   #берём события по одному
-        if e.type == pygame.QUIT:
+        if e.type == QUIT:
             game = False
 
 
 
-        if e.type == pygame.MOUSEBUTTONDOWN:
+        if e.type == MOUSEBUTTONDOWN:
 
             if e.button == 4: #Кручу наверх
                 radius+=1
@@ -37,17 +37,17 @@ while game:
 
 
     #Если левая кнопка мыши нажата
-    if pygame.mouse.get_pressed()[0]:
-        mousepose = pygame.mouse.get_pos()  #Запрашиваю позицию мыши
+    if mouse.get_pressed()[0]:
+        mousepose = mouse.get_pos()  #Запрашиваю позицию мыши
 
-        pygame.draw.circle(gamedisplay, color, mousepose, radius)
+        draw.circle(gamedisplay, color, mousepose, radius)
 
-    if pygame.key.get_pressed()[pygame.K_SPACE]: #Проверяем, что кнопка ПРОБЕЛ нажата
+    if key.get_pressed()[K_SPACE]: #Проверяем, что кнопка ПРОБЕЛ нажата
         print("SPACE")
 
 
 
-    pygame.display.update()
-pygame.quit()
+    display.update()
+quit()
 
 
