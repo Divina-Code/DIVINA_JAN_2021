@@ -62,6 +62,7 @@ while warrior1.isAlive and warrior2.isAlive:
     warrior1.get_damage(warrior2.damage)
     warrior2.get_damage(warrior1.damage)
 
-    rand = ri(0, 10):
+    rand = ri(0, 10)
     if rand == 1:
-        
+        pass
+
