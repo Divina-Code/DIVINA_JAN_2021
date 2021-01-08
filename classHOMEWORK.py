@@ -23,7 +23,7 @@
 
 """
 from random import randint as ri
-
+from time import sleep
 
 class Warrior():
     def __init__(self, name):
@@ -35,7 +35,12 @@ class Warrior():
 
     def get_damage(self, damage):
         self.health-=damage
+
+        if self.health<=0:
+            self.health=0
+            self.isAlive = False
         print(f"{self.name} получил урон {damage} и теперь его здоровье:{self.health}")
+
 
     def eat(self):
         self.health+=ri(20, 40)
@@ -55,6 +60,8 @@ class Warrior():
             self.health = 100
 
 
+
+
 warrior1 = Warrior("Святозар")
 warrior2 = Warrior("Ярополк")
 
@@ -62,7 +69,30 @@ while warrior1.isAlive and warrior2.isAlive:
     warrior1.get_damage(warrior2.damage)
     warrior2.get_damage(warrior1.damage)
 
-    rand = ri(0, 10)
+    rand = ri(0, 12)
     if rand == 1:
-        pass
+        warrior1.eat()
+    elif rand == 2:
+        warrior2.eat()
 
+    elif rand == 3:
+        warrior1.upgrade()
+    elif rand == 4:
+        warrior2.upgrade()
+
+    # elif rand == 5:
+    #     warrior1.sleep()
+    # elif rand == 6:
+    #     warrior2.sleep()
+
+
+
+    print("*"*30)
+    sleep(1)
+
+if warrior1.isAlive:
+    print(f'{warrior1.name} WIN!')
+elif warrior2.isAlive:
+    print(f'{warrior2.name} WIN!')
+else:
+    print(f"It's a DRAW")
